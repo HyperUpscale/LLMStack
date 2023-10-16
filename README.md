@@ -12,19 +12,16 @@
 
 Build tailor-made generative AI applications, chatbots and agents that cater to your unique needs by chaining multiple LLMs. Seamlessly integrate your own data and GPT-powered models without any coding experience using LLMStack's no-code builder. Trigger your AI chains from Slack or Discord. Deploy to the cloud or on-premise.
 
-![llmstack-quickstart](https://github.com/trypromptly/LLMStack/assets/431988/72de45f5-23f9-4cd3-91b0-7d5ae97534c3)
-
-<p align="center">
-  <em>See full demo video <a href="https://youtu.be/8icy1Ccs2lk" target="_blank">here</a></em>
-</p>
-
 ## Getting Started
+It won't work on Ubuntu 20.04 as LLMStack requires python 3.9. 
+It will also not work on any Windows natively, as a required library 'uvloop' is not supported for Windows.
 
-**_Check out our Cloud offering at [Promptly](https://trypromptly.com) or follow the instructions below to deploy LLMStack on your own infrastructure._**
+LLMStack deployment comes with a default admin account whose credentials are `admin` and `promptly`.
 
-LLMStack deployment comes with a default admin account whose credentials are `admin` and `promptly`. _Be sure to change the password from admin panel after logging in_.
 
-### Option 1
+INSTALLATION
+
+### Install Option 1 - Ubuntu 22.04 
 
 Install LLMStack using pip:
 
@@ -40,7 +37,24 @@ llmstack
 
 Above commands will install and start LLMStack. It will create `.llmstack` in your home directory and places the database and config files in it when run for the first time. Once LLMStack is up and running, it should automatically open your browser and point it to [localhost:3000](http://localhost:3000).
 
-### Option 2
+### Install Option 2 - Windows with WSL with Ubuntu 22.04 
+
+cmd
+...
+wsl --install Ubuntu-22.04
+...
+sudo apt update
+...
+sudo apt-get install python3 python3-pip
+...
+sudo pip install llmstack
+...
+sudo playwright install-deps
+...
+llmstack
+
+
+### Option 3 - If you are on Windows - with DOCKER
 
 This method uses docker compose to bring up the application containers. Clone this repository or download the latest release. Install [docker](https://docs.docker.com/engine/install/) if not already installed. Copy `.env.prod` to `.env` and update `SECRET_KEY`, `CIPHER_SALT` and `DATABASE_PASSWORD` in `.env` file:
 
@@ -54,22 +68,12 @@ Run LLMStack using the following command:
 ./run-llmstack.sh
 ```
 
-> If you are on Windows, you can use `run-llmstack.bat` instead
+, you can use `run-llmstack.bat` instead
 
 Once LLMStack is up and ready, it should automatically open your browser and point it to [localhost:3000](http://localhost:3000). You can also alternatively use `docker compose up` to manually start the containers and open [localhost:3000](http://localhost:3000) to login into the platform. Make sure to wait for the API server to be ready before trying to load LLMStack.
 
-> Users of the platform can add their own keys to providers like OpenAI, Cohere, Stability etc., from Settings page. If you want to provide default keys for all the users of your LLMStack instance, you can add them to the `.env` file. Make sure to restart the containers after adding the keys.
-
 > Remember to update `POSTGRES_VOLUME`, `REDIS_VOLUME` and `WEAVIATE_VOLUME` in `.env` file if you want to persist data across container restarts.
 
-<div>
-  <a href="https://www.loom.com/share/1399a39c19394d9cad224e2e62c15285">
-    <p>LLMStack: Quickstart video</p>
-  </a>  
-  <a href="https://www.loom.com/share/1399a39c19394d9cad224e2e62c15285">
-    <img style="max-width:828px;" src="https://cdn.loom.com/sessions/thumbnails/1399a39c19394d9cad224e2e62c15285-with-play.gif">
-  </a>
-</div>
 
 ## Features
 
@@ -103,7 +107,7 @@ Using LLMStack you can build a variety of generative AI applications, chatbots a
 
 ## Administration
 
-Login to [http://localhost:3000/admin](http://localhost:3000/admin) using the admin account. You can add users and assign them to organizations in the admin panel.
+Login to [http://localhost:3000/admin](http://localhost:3000/admin) using: "admin", with "promptly"
 
 ## Cloud Offering
 
@@ -135,4 +139,4 @@ To update documentation, make changes to `web/docs` directory and run `npm run b
 
 ## Contributing
 
-We welcome contributions to LLMStack. Please check out our [contributing guide](https://llmstack.ai/docs/guides/contributing) to learn more about how you can contribute to LLMStack.
+They welcome contributions to LLMStack. Please check out their [contributing guide](https://llmstack.ai/docs/guides/contributing) to learn more about how you can contribute to LLMStack.
